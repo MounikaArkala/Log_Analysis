@@ -32,6 +32,7 @@ fun error_percent():
     print_table()
 
 fun print_table():
+    """prints the table contents"""
     print tabulate(posts, headers=[c.description[0][0], c.description[1][0]])
     print""
     
