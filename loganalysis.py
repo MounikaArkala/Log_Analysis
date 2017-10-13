@@ -7,32 +7,40 @@ DBNAME = "news"
 db = psycopg2.connect(database=DBNAME)
 c = db.cursor()
     
-fun popular_articles():
+
+def popular_articles():
     """This function returns popular 3 articles of all the time"""
     c.execute("""select * from popular_articles 
-              order by access_count desc limit 3""")
+                 order by access_count desc limit 3""")
     posts = c.fetchall()
     print""
     print "******Printing the most popular articles of all the time******"
-    print_table()
+    print_table(posts)
 
-fun popular_authors():
+
+def popular_authors():
     """This function returns authors list according to their popularity"""
     c.execute("select * from popular_authors order by totalaccess_count desc")
     posts = c.fetchall()
     print "******Printing the most popular article authors of all time******"
-    print_table()
+    print_table(posts)
 
-fun error_percent():
+
+def error_percent():
     """This function returns the result of days with more than 
     1 requests leading to errors"""
     c.execute("select * from error_percent where percentage>1.0")
     posts = c.fetchall()
     print"***printing days with more than 1% of requests leading to errors***"
-    print_table()
+    print_table(posts)
 
-fun print_table():
+
+def print_table(table_name):
     """prints the table contents"""
-    print tabulate(posts, headers=[c.description[0][0], c.description[1][0]])
+    print tabulate(table_name, 
+                   headers=[c.description[0][0], c.description[1][0]])
     print""
     
+popular_articles()
+popular_authors()
+error_percent()   
