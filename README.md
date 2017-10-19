@@ -45,7 +45,8 @@ To generate the report for question 2, I created a  view as authorName and no.of
           
 From the resulted view popular_authors,authorNames and no.of views of total articles for each author in decreasing order is selcted as result.
 
-# Design of the code for question 3 I did following four steps:
+# Design of the code for question 3 
+I did following four steps:
 step 1: created a view as date and no.of requests led to error on that particular date 
 
           create view request_errorlog as 
