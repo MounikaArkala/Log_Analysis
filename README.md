@@ -5,10 +5,11 @@
 The Project LogAnalysis aims to create a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool is a Python program using the psycopg2 module to connect to the database.
                                 
                                
-      The database includes three tables:
-
+# The database includes three tables:
 The authors table includes information about the authors of articles.
+
 The articles table includes the articles themselves.
+
 The log table includes one entry for each time a user has accessed the site.
 
 
@@ -24,42 +25,52 @@ The log table includes one entry for each time a user has accessed the site.
 
 # Design of the code for question 1:
 To generate the report for question 1, I created a view as title of the article and no.of times it is accessed
+
           create view popular_articles as 
           select a.title,count(l.path) as access_count 
           from articles a, log l 
           where l.path like  '%' || a.slug || '%'  and l.status ='200 OK'
           group by a.title;
+          
 From the resulted view popular_articles, popular three articles with the no.of times each article is accessed are selected as result.
 
 # Design of the code for question 2:
 To generate the report for question 2, I created a  view as authorName and no.of views of total articles for each author
+
           create view popular_authors as 
           select au.name, sum(p.access_count) as totalaccess_count 
           from articles a, popular_articles p, authors au 
           where a.title=p.title and a.author=au.id 
           group by au.name;
+          
 From the resulted view popular_authors,authorNames and no.of views of total articles for each author in decreasing order is selcted as result.
 
 # Design of the code for question 3 I did following four steps:
 step 1: created a view as date and no.of requests led to error on that particular date 
+
           create view request_errorlog as 
           select time, count(time) as error_occurencecount from 
           (select time :: date from log 
           where status='404 NOT FOUND') as foo 
           group by time 
           order by time;
+          
 step 2: created a view as date and no.of  requests handled on that particular date 
+          
           create view request_log as 
           select time, count(time) as total_occurencecount from
           (select time :: date from log) as foo1 
           group by time 
           order by time;
+          
 step 3: created a view as date and % of requests leading to errors
+
           create view error_percent as 
           select r1.time,
           ((r1.error_occurencecount / r2.total_occurencecount :: decimal)* 100) 
           as percentage from request_errorlog r1, request_log r2
           where r1.time=r2.time""")
+          
 step 4: From the created view error_percent of requests of value more than 1% leading to errors is selcted as a result.
 
 # How to run the code: 
