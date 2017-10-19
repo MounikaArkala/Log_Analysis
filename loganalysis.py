@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 import psycopg2
 # tabulate module is used to print the contents in table format
 from tabulate import tabulate
