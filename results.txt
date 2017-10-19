@@ -1,21 +1,23 @@
-vagrant@vagrant:/vagrant/project_loganalysis$ python loganalysis.py
+vagrant@vagrant:/vagrant/la$ python loganalysis.py
 
 ******Printing the most popular articles of all the time******
 title                             access_count
 --------------------------------  --------------
-Candidate is jerk, alleges rival  342102
-Bears love berries, alleges bear  256365
-Bad things gone, say good people  171762
+Candidate is jerk, alleges rival  338647
+Bears love berries, alleges bear  253801
+Bad things gone, say good people  170098
+
 
 ******Printing the most popular article authors of all time******
 name                      totalaccess_count
 ----------------------  -------------------
-Ursula La Multa                      512805
-Rudolf von Treppenwitz               427781
-Anonymous Contributor                171762
-Markoff Chaney                        85387
+Ursula La Multa                      507594
+Rudolf von Treppenwitz               423457
+Anonymous Contributor                170098
+Markoff Chaney                        84557
 
-******printing days with more than 1% of requests leading to errors ******
+
+***printing days with more than 1% of requests leading to errors***
 time          percentage
 ----------  ------------
 2016-07-17       2.26269
