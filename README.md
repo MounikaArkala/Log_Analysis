@@ -3,16 +3,6 @@
 
 # Description of the project:
 The Project LogAnalysis aims to create a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool is a Python program using the psycopg2 module to connect to the database.
-
-# Following is the description of the database on which reports are generated:
-
-          List of relations
- Schema |   Name   | Type  |  Owner
---------+----------+-------+---------
- public | articles | table | vagrant
- public | authors  | table | vagrant
- public | log      | table | vagrant
-(3 rows)
                                 
                                
       The database includes three tables:
